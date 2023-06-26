@@ -13,9 +13,11 @@ beforeEach(()=> seed(testData))
 
 
 
-describe('200 response', ()=> {
+describe('200 response /api/topics', ()=> {
 
-   
+
+
+
     test('checks to see if array isn"t empty', ()=> {
      return request(app)
         .get('/api/topics')
@@ -35,7 +37,26 @@ describe('200 response', ()=> {
 
    
 }
+     
+
+
+
+
+
+
     )
+
+
+    // test('status:404, route does not exist', () => {
+    //     return request(app)
+    //       .get('/api/topics/notARoute')
+    //       .expect(404)
+    //       .then(({ body }) => {
+    //         console.log(body)
+    //         expect(body.msg).toEqual('Invalid input');
+    //       });
+    //   })
+    
 })
 
 
