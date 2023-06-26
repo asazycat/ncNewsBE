@@ -4,12 +4,6 @@ const {getTopics} = require('./controller/app.controller')
 const app = express()
 
 
-app.use(express.json());
-
-
-
-
-
 
 app.get('/api/topics',  getTopics)
 
@@ -19,13 +13,6 @@ app.use((err, req, res, next) => {
     console.log("going through middleware");
     res.status(404).send({ msg: 'Invalid input' });
   });
-
-
-
-
-
-
-
 
 
 
