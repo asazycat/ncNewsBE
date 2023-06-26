@@ -38,17 +38,17 @@ describe('200 response /api/topics', ()=> {
 
 
 
-test('status:404, responds with an error message ', () => {
-    return request(app)
-      .get('/api/topics/notARoute')
-      .expect(404)
-      
-  });
     })
 
+describe('404 err', ()=> {
 
+    test('status:404, responds with an error message ', () => {
+        return request(app)
+          .get('/api/topics/notARoute')
+          .expect(404)
+          
+      });
 
-
-
+    })
 
 afterAll(() => db.end());
