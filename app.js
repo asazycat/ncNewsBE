@@ -1,18 +1,26 @@
 const express = require('express')
-
-const {getTopics} = require('./controller/app.controller')
+const {errorHandlerOne} = require('./errorHandling/error')
+const {getTopics,getAllApi} = require('./controller/app.controller')
 const app = express()
+
+app.use(express.json())
 
 
 
 app.get('/api/topics',  getTopics)
+app.get('/api', getAllApi)
 
 
 
-app.use((err, req, res, next) => {
-    console.log("going through middleware");
-    res.status(404).send({ msg: 'Invalid input' });
-  });
+
+
+app.all('*', (err, res) => {
+  console.log("going through middleware");
+  res.status(404).send({msg: 'Not Found' });
+});
+
+
+
 
 
 

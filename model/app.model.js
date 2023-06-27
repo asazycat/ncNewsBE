@@ -2,7 +2,7 @@
 const db = require('../db/connection')
 
 
-
+const apiObj = require('../endpoints.json')
 
 
 
@@ -17,3 +17,5 @@ exports.selectTopics = () => {
    })
 
 } 
+
+

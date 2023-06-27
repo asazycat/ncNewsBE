@@ -8,7 +8,7 @@ const app = require('../app')
 const testData = require('../db/data/test-data/index')
 
 
-
+const apiObj = require('../endpoints.json')
 beforeEach(()=> seed(testData))
 
 
@@ -40,15 +40,35 @@ describe('200 response /api/topics', ()=> {
 
     })
 
-describe('404 err', ()=> {
+describe.only('404 err', ()=> {
 
     test('status:404, responds with an error message ', () => {
         return request(app)
-          .get('/api/topics/notARoute')
-          .expect(404)
+          .get('/api/notARoute')
+          .expect(404).then(({body})=> expect(body.msg).toEqual({msg:'Invalid Input'}))
           
       });
 
     })
+
+
+
+describe('Getting a list of available api', ()=> {
+    test('returning api list', ()=> {
+
+        return request(app).get('/api').then(({body})=>{
+      
+            expect(body.obj).toEqual({apiObj})
+        })
+
+    })
+  })
+
+
+
+
+
+
+
 
 afterAll(() => db.end());
