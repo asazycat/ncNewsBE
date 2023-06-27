@@ -40,12 +40,12 @@ describe('200 response /api/topics', ()=> {
 
     })
 
-describe.only('404 err', ()=> {
+describe('404 err', ()=> {
 
     test('status:404, responds with an error message ', () => {
         return request(app)
           .get('/api/notARoute')
-          .expect(404).then(({body})=> expect(body.msg).toEqual({msg:'Invalid Input'}))
+          .expect(404).then(({body})=> expect(body.msg).toEqual('Not Found'))
           
       });
 
@@ -58,7 +58,7 @@ describe('Getting a list of available api', ()=> {
 
         return request(app).get('/api').then(({body})=>{
       
-            expect(body.obj).toEqual({apiObj})
+            expect(body).toEqual(apiObj)
         })
 
     })

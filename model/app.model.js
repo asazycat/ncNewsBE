@@ -19,3 +19,10 @@ exports.selectTopics = () => {
 } 
 
 
+exports.selectArticleById = (id) => {
+
+     db.query(`SELECT * FROM articles WHERE article_id =$1`,id).then((articleObj)=> {
+      return articleObj.rows[0]
+     })
+
+}
