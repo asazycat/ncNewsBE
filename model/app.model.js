@@ -23,7 +23,50 @@ exports.selectArticleById = (id,res) => {
     
     return db.query(`SELECT * FROM articles WHERE article_id = $1`,[id]).then((articleObj)=> {
       if (articleObj.rows.length === 0) {return Promise.reject()}
-      return articleObj.rows
+      return articleObj.rows[0]
      })
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
