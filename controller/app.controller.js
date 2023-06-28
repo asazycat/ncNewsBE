@@ -24,10 +24,21 @@ exports.getAllApi = (req,res,next) => {
 
 
 exports.getArticleById = (req,res,next) => {
-  
-     const  {id} = req.params
-  selectArticleById(id).then((articleObj) => {
-    res.status(200).send(articleObj)
-  })
+ 
+     const {article_id} = req.params
+     
+      selectArticleById(article_id,res).then((articleObj) => {
+        
+      res.status(200).send(articleObj)
+  }).catch(next)
 }
 
+exports.getArticles = (req,res,next) => {
+
+  selectAllArticles().then((allArticlesArray) => {
+
+
+
+    res.status(201).send(allArticlesArray)
+  })
+}
