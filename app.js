@@ -1,5 +1,5 @@
 const express = require('express')
-const {errorHandlerOne} = require('./errorHandling/error')
+const {errorHandlerOne, errorHandlerTwo} = require('./errorHandling/error')
 const {getTopics,getAllApi,getArticleById} = require('./controller/app.controller')
 const app = express()
 
@@ -14,11 +14,8 @@ app.get('/api', getAllApi)
 
 app.get('/api/articles/:article_id', getArticleById)
 
-app.all('*', (err, res) => {
-  console.log("going through middleware");
-  res.status(404).send({msg: 'Not Found' });
-});
-
+app.all('*', errorHandlerOne);
+app.use('/api/articles/notAnId', errorHandlerTwo)
 
 
 

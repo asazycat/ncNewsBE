@@ -65,7 +65,7 @@ describe('Getting a list of available api', ()=> {
   })
 
 
-  describe.only('test to see if input id of article exists', ()=> {
+  describe('test to see if input id of article exists', ()=> {
     test('to see if object is returned', ()=> { 
     return request(app)
    .get(`/api/articles/2`)
@@ -91,7 +91,16 @@ describe('Getting a list of available api', ()=> {
     
 
 
+    describe('400 err' , ()=> {
 
+        test('status:400, responds with an error message ', () => {
+            return request(app)
+              .get('/api/articles/notAnId')
+              .expect(400).then(({body})=> expect(body.msg).toEqual('Bad Request'))
+              
+          });
+    
+        })
 
 
 afterAll(() => db.end());

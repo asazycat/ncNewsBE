@@ -29,6 +29,6 @@ exports.getArticleById = (req,res,next) => {
      
       selectArticleById(article_id).then((articleObj) => {
     res.status(200).send(articleObj)
-  })
+  }).catch(next)
 }
 
