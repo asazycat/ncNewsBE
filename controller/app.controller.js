@@ -43,6 +43,6 @@ exports.getArticles = (req,res,next) => {
 
   selectAllArticles().then((allArticlesArray) => {
  
-    res.status(200).send(allArticlesArray)
+    res.status(200).send({articles:allArticlesArray})
   }).catch(next)
 }

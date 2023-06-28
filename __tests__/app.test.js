@@ -140,9 +140,9 @@ expect(body).toHaveProperty("article_id", expect.any(Number))
             .expect(200)
             .then(({body}) => {
         
-                expect(body.length).toBe(13)
+                expect(body.articles.length).toBe(13)
           
-            body.forEach((article)=>{
+            body.articles.forEach((article)=>{
         
             expect(article).toHaveProperty("article_id", expect.any(Number))
             expect(article).toHaveProperty("title", expect.any(String)) 
@@ -155,7 +155,7 @@ expect(body).toHaveProperty("article_id", expect.any(Number))
             expect(article).toHaveProperty("comment_count", expect.any(String))
             })
 
-
+            expect(body.articles).toBeSorted({ descending: true });
             })
             })
             })
