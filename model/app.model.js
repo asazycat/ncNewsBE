@@ -19,11 +19,11 @@ exports.selectTopics = () => {
 } 
 
 
-exports.selectArticleById = (id) => {
+exports.selectArticleById = (id,res) => {
     
     return db.query(`SELECT * FROM articles WHERE article_id = $1`,[id]).then((articleObj)=> {
-    
-      return articleObj.rows[0]
+      if (articleObj.rows.length === 0) {return Promise.reject()}
+      return articleObj.rows
      })
 
 }
