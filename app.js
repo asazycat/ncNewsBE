@@ -15,11 +15,38 @@ app.get('/api', getAllApi)
 app.get('/api/articles/:article_id', getArticleById)
 
 
+
+
+
+
+
 app.get('/api/articles', getArticles)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.all('*', errorHandlerOne);
-app.use( errorHandlerTwo)
+
+
+
+app.use(errorHandlerTwo)
+
 
 
 
