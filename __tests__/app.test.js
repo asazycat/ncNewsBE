@@ -67,7 +67,7 @@ describe('Getting a list of available api', ()=> {
 
 
 
-  describe.only('test to see if article returned is empty', ()=> {
+  describe('test to see if article returned is empty', ()=> {
     test('to see if object is returned', ()=> { 
     return request(app)
    .get(`/api/articles/70`)
@@ -100,11 +100,7 @@ describe('Getting a list of available api', ()=> {
     .expect(200)
     .then(({body}) => {
 
-
-  
-    
-
-    expect(body).toHaveProperty("article_id", expect.any(Number))
+expect(body).toHaveProperty("article_id", expect.any(Number))
     expect(body).toHaveProperty("title", expect.any(String)) 
     expect(body).toHaveProperty("topic", expect.any(String))
     expect(body).toHaveProperty("author", expect.any(String))
@@ -134,29 +130,29 @@ describe('Getting a list of available api', ()=> {
 
 
 
-        describe('test to see if input id of article exists', ()=> {
+        describe('test to see if all articles are returned', ()=> {
 
 
             
-            test('to see if object is returned', ()=> { 
+            test('to see if articles array is returned', ()=> { 
             return request(app)
            .get(`/api/articles`)
-            .expect(201)
+            .expect(200)
             .then(({body}) => {
         
-                expect(body.topics.length).toBe(13)
+                expect(body.length).toBe(13)
           
-            body.forEach(()=>{
+            body.forEach((article)=>{
         
-            expect(body).toHaveProperty("article_id", expect.any(Number))
-            expect(body).toHaveProperty("title", expect.any(String)) 
-            expect(body).toHaveProperty("topic", expect.any(String))
-            expect(body).toHaveProperty("author", expect.any(String))
+            expect(article).toHaveProperty("article_id", expect.any(Number))
+            expect(article).toHaveProperty("title", expect.any(String)) 
+            expect(article).toHaveProperty("topic", expect.any(String))
+            expect(article).toHaveProperty("author", expect.any(String))
               
-            expect(body).toHaveProperty("created_at", expect.any(String))
-            expect(body).toHaveProperty("votes", expect.any(Number))
-            expect(body).toHaveProperty("article_img_url", expect.any(String))
-            expect(body).toHaveProperty("comment_count", expect.any(Number))
+            expect(article).toHaveProperty("created_at", expect.any(String))
+            expect(article).toHaveProperty("votes", expect.any(Number))
+            expect(article).toHaveProperty("article_img_url", expect.any(String))
+            expect(article).toHaveProperty("comment_count", expect.any(String))
             })
 
 

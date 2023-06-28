@@ -1,6 +1,6 @@
 
 
-const {selectTopics,selectAllApi, selectArticleById} = require('../model/app.model')
+const {selectTopics, selectArticleById, selectAllArticles} = require('../model/app.model')
 const apiList = require('../endpoints.json')
 
 
@@ -36,9 +36,7 @@ exports.getArticleById = (req,res,next) => {
 exports.getArticles = (req,res,next) => {
 
   selectAllArticles().then((allArticlesArray) => {
-
-
-
-    res.status(201).send(allArticlesArray)
-  })
+   console.log('controller')
+    res.status(200).send(allArticlesArray)
+  }).catch(next)
 }

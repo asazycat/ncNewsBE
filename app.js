@@ -19,7 +19,7 @@ app.get('/api/articles', getArticles)
 
 
 app.all('*', errorHandlerOne);
-app.use('/api/articles/notAnId', errorHandlerTwo)
+app.use( errorHandlerTwo)
 
 
 
