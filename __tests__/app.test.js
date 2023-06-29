@@ -163,8 +163,30 @@ expect(body).toHaveProperty("article_id", expect.any(Number))
 
 
 
+            describe('gets an array of comments back for the specified id', ()=> {
+                test('check if the array has been returned with comments', ()=> {
+   
+                 return  request(app).get('/api/articles/3/comments').expect(200).then(({body})=>{
+   
+                       expect(body.comments.length).toBe(2)
+   
+   
+                       body.comments.forEach((eachComment) => {
+   
+               expect(eachComment).toHaveProperty("comment_id", expect.any(Number))
+               expect(eachComment).toHaveProperty("votes", expect.any(Number)) 
+               expect(eachComment).toHaveProperty("created_at", expect.any(String))
+               expect(eachComment).toHaveProperty("author", expect.any(String))
+                 
+               expect(eachComment).toHaveProperty("body", expect.any(String))
+               expect(eachComment).toHaveProperty("article_id", expect.any(Number))
+                       })
 
-
+                       expect(body.comments).toBeSorted();
+                   })
+                })
+                     })
+   
 
 
 

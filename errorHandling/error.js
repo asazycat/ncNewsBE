@@ -1,4 +1,4 @@
-exports.errorHandlerOne = (err, res) => {
+exports.errorHandler404 = (err, res) => {
 
     
     res.status(404).send({msg: 'Not Found' });
@@ -9,7 +9,7 @@ exports.errorHandlerOne = (err, res) => {
 
 
 
-exports.errorHandlerTwo = (err, req, res, next) => {
+exports.errorHandler400 = (err, req, res, next) => {
 
     res.status(400).send({msg: 'Bad Request'})
 }
