@@ -182,7 +182,7 @@ expect(body).toHaveProperty("article_id", expect.any(Number))
                expect(eachComment).toHaveProperty("article_id", expect.any(Number))
                        })
 
-                       expect(body.comments).toBeSorted();
+                       expect(body.comments).toBeSorted({ ascending: true });
                    })
                 })
                      })
