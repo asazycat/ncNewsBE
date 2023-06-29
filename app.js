@@ -1,6 +1,6 @@
 const express = require('express')
-const {errorHandlerOne, errorHandlerTwo} = require('./errorHandling/error')
-const {getTopics,getAllApi,getArticleById, getArticles} = require('./controller/app.controller')
+const {errorHandler404, errorHandler400} = require('./errorHandling/error')
+const {getTopics,getAllApi,getArticleById, getArticles,getCommentsByArticleId} = require('./controller/app.controller')
 const app = express()
 
 app.use(express.json())
@@ -28,6 +28,7 @@ app.get('/api/articles', getArticles)
 
 
 
+app.get('/api/articles/:article_id/comments', getCommentsByArticleId)
 
 
 
@@ -40,12 +41,11 @@ app.get('/api/articles', getArticles)
 
 
 
-
-app.all('*', errorHandlerOne);
-
+app.all('*', errorHandler404);
 
 
-app.use(errorHandlerTwo)
+
+app.use(errorHandler400)
 
 
 
