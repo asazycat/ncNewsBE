@@ -192,5 +192,41 @@ expect(body).toHaveProperty("article_id", expect.any(Number))
 
 
 
+               describe('getting error 400 for invalid data type', ()=> {
+                test('inputing non number into id should return 400', ()=> {
+                    request(app).get("/api/articles/KatherineRules/comments").expect(400).then(({body})=> {
+                        expect(body.msg).toEqual('Bad Request')})
+                    })})
+            
+               
+
+
+
+               
+describe('404 err', ()=> {
+
+    test('status:404, responds with an error message for id that doesn"t exist', () => {
+        return request(app)
+          .get("/api/articles/6969420/comments")
+          .expect(404).then(({body})=> expect(body.msg).toEqual('Not Found'))
+          
+      });
+
+    })
+
+
+    describe('valid id but it doesn"t have it"s own comments', ()=> {
+
+        test('status:200, responds with an empty array', () => {
+            return request(app)
+              .get("/api/articles/2/comments")
+              .expect(200).then(({body})=> expect(body.comments).toEqual([]))
+              
+          });
+    
+        })
+    
+
+
 
 afterAll(() => db.end());

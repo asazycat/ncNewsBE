@@ -46,7 +46,7 @@
   "GET /api/article/:article_id/comments": {
     "description":"retrieves an array with the comments that have the id inside them",
     "queries":["article_id"],
-    "exampleResponce:" [{
+    "exampleResponce": [{
       "body": "git push origin master",
       "votes": 0,
       "author": "icellusedkars",

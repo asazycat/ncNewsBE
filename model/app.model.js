@@ -50,15 +50,32 @@ exports.selectAllArticles = () => {
 
 exports.selectCommentsByArticleId = (id) => {
 
-  return db.query('SELECT * FROM comments WHERE article_id = $1 ORDER BY comments.created_at ASC', [id]).then((comments) => {
- 
-    return comments.rows
+
+  return db.query(`SELECT * FROM articles WHERE article_id = $1`, [id]).then((article) => {
+       
+    
+
+        if (article.rows.length === 0) {
+    
+          return Promise.reject()}
+      
+          return  db.query(`SELECT * FROM comments WHERE article_id = $1`,[id]).then((comment)=>{
+           
+              if (comment.rows.length === 0 ) {return []}
+        
+            return comment.rows
+            
+            })
+       
   })
+
+   
+  
+
+
+
+
 }
-
-
-
-
 
 
 
