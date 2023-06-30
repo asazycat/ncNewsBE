@@ -103,7 +103,22 @@ exports.insertCommentByArticleId = (newComment, id) => {
 
 
 
+exports.changeArticleById = (id, votes) => {
 
+
+    
+ 
+  return db.query('UPDATE articles SET votes = votes + $1 WHERE articles.article_id = $2 RETURNING *',[votes,id]).then((article) => {
+   
+   
+     if(article.rows.length === 0) {
+      console.log('if statement')
+      return Promise.reject()}
+
+
+return article.rows[0]
+  })
+}
 
 
 

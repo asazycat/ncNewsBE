@@ -350,7 +350,128 @@ return request(app)
 
 
 
+describe('PATCH /api/articles/:article_id', ()=> {
 
+    test('Check if body has correct properties inside', ()=> {
+        const newItem = {
+            'invalid property':3
+        }
+
+       return request(app).patch('/api/articles/3').send(newItem).expect(400).then((returnedContents) =>
+        {
+              expect(returnedContents.body.msg).toEqual('Bad Request')
+
+        }
+
+       )
+    })
+
+
+
+     
+
+    test('Check if article_id present is valid data type but doesn"t exist: Should return 404', ()=> {
+         
+
+        const newItem = {
+             "inc_votes": 10
+
+        }
+
+     return request(app).patch('/api/articles/15').send(newItem).expect(404).then((returnedContents) =>
+        {
+
+            expect(returnedContents.body.msg).toEqual('Not Found')
+        }
+     )
+
+    })  
+    
+    
+
+    test('Check if article inside is non valid data type: Shoudl return 400' ,()=>{
+       
+        const newItem = {
+            inc_votes: 'y'
+        } 
+
+       return request(app).patch('/api/articles/kate').send(newItem).expect(400).then((returnedContents) =>  {
+        
+            expect(returnedContents.body.msg).toEqual('Bad Request')
+            
+        
+    })
+
+    })
+
+
+
+
+    test('Check if body is empty and returns error 400', ()=> {
+
+        const newItem = {}
+
+      return  request(app).patch('/api/articles/3').send(newItem).expect(400).then((returnedContents) => 
+        {
+            expect(returnedContents.body.msg).toEqual('Bad Request')
+            
+        })
+
+    })
+
+
+
+
+
+    test('Check if the article vote has been patched to database', ()=> {
+      
+        const newItem = {
+         "inc_votes":10
+
+        }
+
+       return request(app).patch('/api/articles/3').send(newItem).expect(200).then((returnedContents) => {
+        {
+            expect(returnedContents.body).toHaveProperty("article_id", 3)
+            expect(returnedContents.body).toHaveProperty("title", expect.any(String)) 
+            expect(returnedContents.body).toHaveProperty("topic", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("author", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("body", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("created_at", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("votes", expect.any(Number))
+            expect(returnedContents.body).toHaveProperty("article_img_url", expect.any(String))
+            
+        }
+
+    })
+    })
+
+
+    test('check if extra porperties in body still patches the votes ', ()=> {
+        const newItem = {
+            "inc_votes":10,
+            'extraProperty': 'invalid'
+
+        }
+
+       return request(app).patch('/api/articles/3').send(newItem).expect(200).then((returnedContents) => 
+        {
+            expect(returnedContents.body).toHaveProperty("article_id", 3)
+            expect(returnedContents.body).toHaveProperty("title", expect.any(String)) 
+            expect(returnedContents.body).toHaveProperty("topic", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("author", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("body", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("created_at", expect.any(String))
+            expect(returnedContents.body).toHaveProperty("votes", expect.any(Number))
+            expect(returnedContents.body).toHaveProperty("article_img_url", expect.any(String))
+            
+        }
+       
+    )
+})
+
+
+})
 
 
 
