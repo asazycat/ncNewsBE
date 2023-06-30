@@ -8,6 +8,7 @@ const app = require('../app')
 const testData = require('../db/data/test-data/index')
 
 
+
 const apiObj = require('../endpoints.json')
 beforeEach(()=> seed(testData))
 
@@ -225,8 +226,132 @@ describe('404 err', ()=> {
           });
     
         })
+
+
+
+        
+
+        describe('Checking if body is in proper format or proper username is in it', ()=>{
+            test('check if missing properties', ()=> {
+             const newItem = {}
+                return request(app).post('/api/articles/1/comments').send(newItem).expect(400).then((response)=> {
+                    expect(response.body).toEqual({msg: "Bad Request"})
+                })
+
+       })
+
+
+          
+        })
+            
+        
+             test('check to see if username is in achieve of the comment posted', ()=> {
+
+             const   newItem = {'username': "AsazyCat" , "body": "illegal comment"}
+                request(app).post('/api/articles/1/comments').send(newItem).expect(400).then((response)=> {
+                    expect(response.body).toEqual({"msg":"Bad Request"})
+                })
+    })
+         
+
+
+       describe('check if entity has been posted successfully', ()=> {
+        test('checking post', ( ) => {
+        const newItem = {
+            "username": "butter_bridge",
+            "body": "I will take this planet and rule it with cats",
+            
+        }
+           return request(app).post('/api/articles/3/comments').send(newItem).expect(201).then((response)=> {
+          
+            expect(response.body.postedComment).toHaveProperty("comment_id", expect.any(Number))
+            expect(response.body.postedComment).toHaveProperty("author", "butter_bridge")
+            expect(response.body.postedComment).toHaveProperty("body", "I will take this planet and rule it with cats")
+            expect(response.body.postedComment).toHaveProperty("article_id", 3)
+            expect(response.body.postedComment).toHaveProperty("created_at", expect.any(String))
+            expect(response.body.postedComment).toHaveProperty("votes", 0) 
+              
+           })
+ })
+
+       })
+
+
+
+     
+
+
+       describe('check if entity has been posted successfully', ()=> {
+        test('checking post', ( ) => {
+        const newItem = {
+            "username": "butter_bridge",
+            "body": "I will take this planet and rule it with cats",
+            "votes": 10
+            
+        }
+           return request(app).post('/api/articles/3/comments').send(newItem).expect(201).then((response)=> {
+          
+            expect(response.body.postedComment).toHaveProperty("comment_id", expect.any(Number))
+            expect(response.body.postedComment).toHaveProperty("author", "butter_bridge")
+            expect(response.body.postedComment).toHaveProperty("body", "I will take this planet and rule it with cats")
+            expect(response.body.postedComment).toHaveProperty("article_id", 3)
+            expect(response.body.postedComment).toHaveProperty("created_at", expect.any(String))
+            expect(response.body.postedComment).toHaveProperty("votes", 0) 
+              
+           })
+ })
+
+       })
+
+
+
+
+
+
+
+
+
+
+       describe('getting error 400 for invalid data type for POST', ()=> {
+        test('inputing non number into id should return 400', ()=> {
+            const newItem = {
+                "username": "butter_bridge",
+                "body": "I will take this planet and rule it with cats",
+                
+            }
+
+            request(app).post("/api/articles/KatherineRules/comments").send(newItem).expect(400).then((response)=> {
+              
+                expect(response.body.msg).toEqual('Bad Request')})
+            })})
     
+       
 
 
 
-afterAll(() => db.end());
+       
+describe('404 err for POST input of number not there', ()=> {
+    const newItem = {
+        "username": "butter_bridge",
+        "body": "I will take this planet and rule it with cats",
+        
+    }
+test('status:404, responds with an error message for id that doesn"t exist', () => {
+return request(app)
+  .post("/api/articles/15/comments").send(newItem)
+  .expect(404).then((response)=> expect(response.body.msg).toEqual('Not Found'))
+  
+});
+
+})
+
+
+        
+
+
+
+
+
+
+
+afterAll(() => db.end())
