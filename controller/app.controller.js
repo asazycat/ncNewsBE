@@ -1,6 +1,6 @@
 
 
-const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId} = require('../model/app.model')
+const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId, insertCommentByArticleId} = require('../model/app.model')
 const apiList = require('../endpoints.json')
 
 
@@ -59,4 +59,19 @@ exports.getCommentsByArticleId = (req,res,next) => {
       res.status(200).send({"comments": comments})
      }).catch(next)
 
+}
+
+
+
+exports.addCommentByArticleId = (req,res,next) => {
+
+
+
+insertCommentByArticleId(req.body,req.params).then((postedComment)=> {
+ 
+  res.status(201).send({postedComment})
+}).catch((err) => {
+  
+  next(err)
+})
 }

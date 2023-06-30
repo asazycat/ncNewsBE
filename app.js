@@ -1,6 +1,6 @@
 const express = require('express')
-const {errorHandler404, errorHandler400} = require('./errorHandling/error')
-const {getTopics,getAllApi,getArticleById, getArticles,getCommentsByArticleId} = require('./controller/app.controller')
+const {errorHandler404, errorHandler400, psqlErrors} = require('./errorHandling/error')
+const {getTopics,getAllApi,getArticleById, getArticles,getCommentsByArticleId,addCommentByArticleId,} = require('./controller/app.controller')
 const app = express()
 
 app.use(express.json())
@@ -36,14 +36,14 @@ app.get('/api/articles/:article_id/comments', getCommentsByArticleId)
 
 
 
-
+app.post('/api/articles/:article_id/comments', addCommentByArticleId)
 
 
 
 
 app.all('*', errorHandler404);
 
-
+app.use(psqlErrors)
 
 app.use(errorHandler400)
 

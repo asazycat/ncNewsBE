@@ -87,6 +87,19 @@ exports.selectCommentsByArticleId = (id) => {
 
 
 
+exports.insertCommentByArticleId = (newComment, id) => {
+
+ const {username,body} = newComment
+ const {article_id} = id
+     
+
+
+  return db.query('INSERT INTO comments (author,body,article_id, votes) VALUES ($1, $2, $3,$4) RETURNING *;', [username,body,article_id,0]).then((returnContents) => {
+   
+    return returnContents.rows[0]
+  })
+
+}
 
 
 
@@ -106,4 +119,4 @@ exports.selectCommentsByArticleId = (id) => {
 
 
 
-
+  
