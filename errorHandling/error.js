@@ -8,13 +8,7 @@ exports.errorHandler404 = (err, res) => {
 
 
 
-  // exports.errorHandler404post = (err, req, res,next) => {
-
-    
-  //   res.status(404).send({msg: 'Not Found' });
-
-    
-  // }
+ 
 
 
 exports.errorHandler400 = (err, req, res, next) => {
