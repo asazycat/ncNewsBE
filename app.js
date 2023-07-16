@@ -69,7 +69,7 @@ app.use(errorHandler400)
 
 
 
-app.get('/api/users', getUsers)
+
 
 
 module.exports = app 

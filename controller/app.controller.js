@@ -165,7 +165,7 @@ exports.editArticleById = (req,res,next) => {
 
 exports.getUsers = (req,res,next)=> {
 
-  console.log('controller')
+  console.log()
    
   selectUsers().then((users)=> {
     res.status(200).send({users})
