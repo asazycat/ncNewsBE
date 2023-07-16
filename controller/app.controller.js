@@ -1,6 +1,6 @@
 
 
-const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId, insertCommentByArticleId, changeArticleById} = require('../model/app.model')
+const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId, insertCommentByArticleId, changeArticleById, selectUsers} = require('../model/app.model')
 const apiList = require('../endpoints.json')
 
 
@@ -93,4 +93,82 @@ exports.editArticleById = (req,res,next) => {
   {
    
     next(err)})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.getUsers = (req,res,next)=> {
+
+  console.log('controller')
+   
+  selectUsers().then((users)=> {
+    res.status(200).send({users})
+  }).catch(next)
+
 }

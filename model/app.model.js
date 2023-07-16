@@ -112,7 +112,7 @@ exports.changeArticleById = (id, votes) => {
    
    
      if(article.rows.length === 0) {
-      console.log('if statement')
+     
       return Promise.reject()}
 
 
@@ -135,3 +135,14 @@ return article.rows[0]
 
 
   
+
+
+
+
+exports.selectUsers = () => {
+
+console.log('model')
+  return db.query('SELECT * FROM users;').then((users)=> {
+    return users.rows
+  })
+}

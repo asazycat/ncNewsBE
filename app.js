@@ -1,6 +1,6 @@
 const express = require('express')
 const {errorHandler404, errorHandler400, psqlErrors} = require('./errorHandling/error')
-const {getTopics,getAllApi,getArticleById, getArticles,getCommentsByArticleId,addCommentByArticleId,editArticleById} = require('./controller/app.controller')
+const {getTopics,getAllApi,getArticleById, getArticles,getCommentsByArticleId,addCommentByArticleId,editArticleById, getUsers} = require('./controller/app.controller')
 const app = express()
 
 app.use(express.json())
@@ -50,6 +50,26 @@ app.use(errorHandler400)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.get('/api/users', getUsers)
 
 
 module.exports = app 
