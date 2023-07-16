@@ -1,6 +1,6 @@
 exports.errorHandler404 = (err, res) => {
 
-    
+ 
     res.status(404).send({msg: 'Not Found' });
 
     
@@ -19,7 +19,7 @@ exports.errorHandler400 = (err, req, res, next) => {
 
 exports.psqlErrors = (err, req, res, next) => {
 
- 
+ console.log(err)
 
 
   if (err.code === '23503')  {

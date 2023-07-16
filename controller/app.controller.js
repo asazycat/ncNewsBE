@@ -111,6 +111,7 @@ exports.editArticleById = (req,res,next) => {
 
 exports.deleteCommentById = (req,res,next) => {
 
+  
 
   const {comment_id} = req.params
    removeCommentById(comment_id).then((removedCommentObj)=> {
@@ -124,7 +125,7 @@ exports.deleteCommentById = (req,res,next) => {
 
 
 exports.getUsers = (req,res,next)=> {
-
+console.log('usrs')
   console.log()
    
   selectUsers().then((users)=> {

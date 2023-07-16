@@ -43,10 +43,10 @@ app.patch('/api/articles/:article_id', editArticleById)
 
 
 
-app.delete('/api/comments/comment_id', deleteCommentById)
+app.delete('/api/comments/:comment_id', deleteCommentById)
 
 
-app.get('/api/users/getUsers',getUsers)
+app.get('/api/users',getUsers)
 
 app.all('*', errorHandler404);
 
