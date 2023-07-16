@@ -1,6 +1,6 @@
 
 
-const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId, insertCommentByArticleId, changeArticleById, selectUsers} = require('../model/app.model')
+const {selectTopics,selectAllApi, selectArticleById, selectAllArticles,selectCommentsByArticleId, insertCommentByArticleId, changeArticleById, selectUsers, removeCommentById} = require('../model/app.model')
 const apiList = require('../endpoints.json')
 
 
@@ -109,57 +109,17 @@ exports.editArticleById = (req,res,next) => {
 
 
 
+exports.deleteCommentById = (req,res,next) => {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const {comment_id} = req.params
+   removeCommentById(comment_id).then((removedCommentObj)=> {
+ console.log(removedCommentObj)
+ res.status(204).send({removedCommentObj})  })
+ .catch(next)
+ }
+ 
+ 
 
 
 

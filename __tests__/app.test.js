@@ -481,66 +481,53 @@ describe('PATCH /api/articles/:article_id', ()=> {
 
 
 
+// describe('Testing for Task 9', ()=> {
+
+    
+
+//     test('test to see if entity is deleted successfully',()=> {
+    
+//         request(app).delete("/api/comments/7").expect(204).then((returnedContents)=> {
+            
+//              expect(returnedContents).toEqual({})
+    
+//     })
+    
+//     })
 
 
 
+//     test('test to see if valid input but doesn"t exist',()=> {
+    
+       
+//         return request(app).delete('/api/comments/1000').expect(404).then((returnedContents) =>
+//         {
+
+//             expect(returnedContents.body.msg).toEqual('Not Found')
+//         }
+//      )
+    
+//     })
 
 
 
+//     // test('test to see if the input is invalid',()=> {
+    
+//     //     return  request(app).delete("/api/comments/katerineRules").expect(400).then((returnedContents) => 
+//     //     {
+//     //         expect(returnedContents.body.msg).toEqual('Bad Request')
+            
+//     //     })
+
+    
+//     // })
 
 
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+//     })
 
 
 

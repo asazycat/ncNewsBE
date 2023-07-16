@@ -126,7 +126,19 @@ return article.rows[0]
 
 
 
+exports.removeCommentById = (id) => {
 
+  return db.query('DELETE FROM comments WHERE comment_id = $1 RETURNING *;', [id]).then((deleted)=> {
+       
+    console.log(deleted.rows.length)
+    if(deleted.rows.length === 0) {
+        
+      return Promise.reject()}
+    
+      return deleted.rows[0]
+    })
+  }
+  
 
 
 
