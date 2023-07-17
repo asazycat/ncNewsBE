@@ -533,7 +533,7 @@ describe('Testing for Task 9', () => {
 
 
 
-describe.only("users", () => {
+describe("users", () => {
 
     test('Get users', () => {
 
