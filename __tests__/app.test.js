@@ -343,7 +343,7 @@ describe('404 err for POST input of number not there', () => {
     test('status:404, responds with an error message for id that doesn"t exist', () => {
         return request(app)
             .post("/api/articles/15/comments").send(newItem)
-            .expect(404).then((response) => expect(response.body.msg).toEqual('Not Found'))
+            .expect(404).then((response) => expect(response.body.msg).toEqual('Not Found,try'))
 
     });
 
