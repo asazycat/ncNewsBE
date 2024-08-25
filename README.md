@@ -27,10 +27,16 @@ Instructions for Setup:
 
 4. Run "npm setup-dbs", this will create the databases and tables needed.
 
-5. Run "npm run seed" to populate the databases with data 
+5. Run "npm run seed" to populate  local databases with data 
 
-The link here allows api calls to be made. Type /api after .com to see what REST api endpoints are available.
+The link here allows api calls to be made. The link show the options available.
 
 To run tests from TTD, run command "npm run test"
 
-Hosted Link on Render: https://nc-news-render.onrender.com
+Hosted Link on Render: https://nc-news-render.onrender.com/api
+
+Alternativly you can put this on your own database instance and hosting site. Make a .env.production environment file with the value of the connection string of the database instance of your choice. 
+
+run "npn run seed-prod"
+
+For rendering, add the environment variables to the hosting providor with the env.production value and value "production". 
