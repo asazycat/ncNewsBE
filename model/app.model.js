@@ -132,7 +132,7 @@ exports.removeCommentById = (id) => {
  
   return db.query('DELETE FROM comments WHERE comment_id = $1 RETURNING *', [id]).then((deleted)=> {
        
-    console.log(deleted)
+    
     if(deleted.rows.length === 0) {
         
       return Promise.reject()}
@@ -155,7 +155,7 @@ exports.removeCommentById = (id) => {
 
 exports.selectUsers = () => {
 
-console.log('model')
+
   return db.query('SELECT * FROM users;').then((users)=> {
     return users.rows
   })
