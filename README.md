@@ -7,7 +7,7 @@ When you have cloned the repository, you will have to make the environment varia
 
 Please make two files called .env.development and .env.test, 
 
-Hosted Link on Render: https://nc-news-render.onrender.com
+Hosted Link on Render: https://nc-news-render.onrender.com/api
 
 You can use any of the rest api to 
 
